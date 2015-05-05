@@ -1,0 +1,128 @@
+<div class="row content">
+    <div class="col-lg-12">
+        <h1 class="page-header">Notification</h1>
+        <form class="form-inline">
+            <div class="table-responsive">
+            	<label>
+                	<input type="text" class="form-control" placeholder="Search" class="pull-right"/>
+                 </label>
+              <label>
+                	
+                	 <button ng-click="createNotification()">Create Notification</button>
+               </label>
+             <div ng-show="showHideCreateNotification">
+             <form name="notificationCreate" class="form-horizontal secureForm" data-ng-submit="createNotification(couponCreate.$valid, coupon)" novalidate>
+             	<fieldset>
+             		<div class="row">
+                		<!-- name -->
+                	 	<div class="col-xs-9">
+                			<label>
+                				Name :
+                			</label>
+                			<div class="form-group ">
+                    			<input class="form-control" name="name" type="text" data-ng-model="coupon.Name" placeholder="Name" 
+                         		data-ng-change="invalid = false" required />
+                        		<p data-ng-show="couponCreate.name.$invalid && !couponCreate.name.$pristine" class="help-block">Coupon name is required.</p>
+                   		 </div>
+                   	</div>
+                   	<div class="col-xs-9">	
+                    <!-- code -->
+                    	<label>
+                		Code :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="code" type="text" data-ng-model="coupon.Code"  placeholder="Code" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.code.$invalid && !couponCreate.code.$pristine" class="help-block">Code is required.</p>
+                     	</div>
+                     	</br>
+                    <!-- brand -->
+                    	<label>
+                		Brand :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="brand" type="text" data-ng-model="coupon.Brand"  placeholder="Brand" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.brand.$invalid && !couponCreate.brand.$pristine" class="help-block">Brand is required.</p>
+                     	</div>
+                     	</br>
+                     	<!-- category -->
+                    	<label>
+                		Category :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="category" type="text" data-ng-model="coupon.Category"  placeholder="Category" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.category.$invalid && !couponCreate.category.$pristine" class="help-block">Category name is required.</p>
+                     	</div>
+                     	</br>
+                     	 <!-- description -->
+                    	<label>
+                		Description :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="description" type="text" data-ng-model="coupon.Description"  placeholder="Description" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.description.$invalid && !couponCreate.name.$pristine" class="help-block">Description is required.</p>
+                     	</div>
+                     	</br>
+                     	 <!-- Image url 1-->
+                    	<label>
+                		Image Url 1 :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="image1" type="text" data-ng-model="coupon.Image1"  placeholder="Image Url" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.image1.$invalid && !couponCreate.image1.$pristine" class="help-block">Image Url is required.</p>
+                     	</div>
+                     	 <!-- Image url 2-->
+                    	<label>
+                		Image Url 2 :
+                		</label>
+                     	<div class="form-group">
+                        	<input class="form-control" name="image2" type="text" data-ng-model="coupon.Image2"  placeholder="Image Url" 
+                        	data-ng-change="invalid = false" required />
+                        	<p data-ng-show="couponCreate.image2.$invalid && !couponCreate.image2.$pristine" class="help-block">Image Url is required.</p>
+                     	</div>
+                     	</br>
+                    	 <div class="col-md-6 col-md-offset-3 "><button type="submit" class="btn btn-default" data-ng-click="saveCoupon(couponCreate.$valid,coupon)" >Save Coupons</button></div> 
+             		</div>
+               	</fieldset>
+             </form>
+             </div>
+                 
+            <table datatable="ng" ng-show="true" data-dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image 1</th>
+                    <th>Image 2</th>
+                    <th>Update/Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <div  >
+                <tr data-ng-repeat="c in coupons">
+                    <td>{{ c.Name }}</td>
+                    <td>{{ c.Code}}</td>
+                    <td>{{ c.Brand}}</td>
+                    <td>{{ c.Category }}</td>
+                    <td>{{ c.Description}}</td>
+                    <td><img src="{{imagesUrl}}activities/{{c.ImageUrl1}}" alt="No Image" class="img-thumbnail" style="width: 125px;"/></td>
+                    <td><img src="{{imagesUrl}}activities/{{c.ImageUrl2}}" alt="No Image" class="img-thumbnail" style="width: 125px;"/></td>
+                    <td>
+                        <button type="button" data-ng-click="editCoupon($index)" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                        <button type="button" data-ng-click="deleteCoupon($index)" class="btn btn-danger "><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+                </div>
+                </tbody>
+            </table>
+            </div>
+        </form>
+    </div>
+</div>

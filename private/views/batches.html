@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Batch</h1>
+        
+        <div>
+            <input type="text" placeholder="Search" />
+        </div>
+        </br>
+        <table datatable="ng" ng-show="showHideBatchDetails" data-dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-bordered table-hover">
+            <thead>
+                
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Vip</th>
+                    <th>Batch No</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <div>
+                    <tr data-ng-repeat="u in users">
+                        <td>{{ u.username}}</td>
+                        <td>{{ u.country}}</td>
+                        <td>{{ u.contact}}</td>
+                        <td>{{ u.email }}</td>
+                        <td>{{ u.gender }}</td>
+                        <td>{{ u.vip }}</td>
+                        <td>{{ u.batch_id }}</td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+        
+        <table datatable="ng" ng-show="true" data-dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-bordered table-hover">
+            <thead>
+                
+                <tr>
+                    <th>Id</th>
+                    <th>Total Users</th>
+                    <th>Update/Delete</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <div>
+                    <tr data-ng-repeat="b in batches">
+                        <td>{{ b.batch_id}}</td>
+                        <td>{{ b.total}}</td>
+                        <td>
+                            <button type="button" data-ng-click="editbatch($index,u,u.id)" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                            <button type="button" data-ng-click="deletebatch($index,batchs)" class="btn btn-danger "><i class="fa fa-trash-o"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" data-ng-click="batchList($index,u,u.id)" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+        
+        
+    </div>
+</div>

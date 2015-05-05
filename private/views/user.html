@@ -1,0 +1,226 @@
+<div class="row content">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="color : grey !important;">Users</h1>    
+                <div class="row">
+                    <button ng-click="createuser()" class="btn btn-primary pull-left" style="margin-left : 2em">Create User</button>
+                        <div class="col-md-4 col-md-offset-6">
+
+                            <form action="" class="search-form">
+                            
+                                <div class="form-group has-feedback">
+                                    <label for="search" class="sr-only">Search</label>
+                                    <input type="text" ng-model = "filter.search" class="form-control" name="search" id="search" placeholder="search">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+         </div> 
+             </br> 
+             <div ng-show="showHideCreateUsers">
+             <form name="userCreate"  class="form-horizontal" role="form" data-ng-submit="saveOrCreateUser();">
+             	<fieldset>
+             		<div class="form-group">
+                		<!-- name -->
+                		<label for="inputName3" class="col-sm-2 control-label">Name</label>
+                		<div class="col-sm-4">
+                    			<input  type="text" class="form-control"  data-ng-model="user.username" placeholder="Name" 
+                         		 required />
+                   		 </div>
+                   		 <!-- email -->
+                		<label for="inputName3" class="col-sm-2 control-label">Email</label>
+                		<div class="col-sm-4">
+                    			<input  type="email" class="form-control"  data-ng-model="user.email" placeholder="Email" 
+                         		 required />
+                   		 </div>
+                   	</div>
+                   	<div class="form-group">
+                		<!-- pincode -->
+                		<label for="inputName3" class="col-sm-2 control-label">Pincode</label>
+                		<div class="col-sm-4">
+                    			<input  type="number" class="form-control"  ng-pattern = "/^(\d{5}-\d{4}|\d{5})$/" data-ng-model="user.pincode" placeholder="Pincode" 
+                         		 required />
+                   		 </div>
+                   		 <!-- dob -->
+                		<label for="inputName3" class="col-sm-2 control-label">DOB</label>
+                		<div class="col-sm-4">
+                    			<input type="datetime-local" class="form-control"  data-ng-model="user.dob" placeholder="yyyy-MM-ddTHH:mm:ss"
+                         		 required />
+                   		 </div>
+                   	</div>
+                   	<div class="form-group">
+                	<!-- Sex -->
+                    	<label for="inputName3" class="col-sm-2 control-label">Sex</label>
+                     	<div class="col-sm-4">
+                        	<input   ng-checked="flag.vipYes"  type="radio" data-ng-model="user.gender"  placeholder="Gender" 
+                        	   value =1 /> Male <br/>
+                        	<input   ng-checked="flag.vipNo"  type="radio" data-ng-model="user.gender"  placeholder="Gender" 
+                        	   value =0 /> Female <br/>
+                        	
+                     	</div>
+                     	<!-- Vip -->
+                    	<label for="inputName3" class="col-sm-2 control-label">Vip</label>
+                     	<div class="col-sm-4">
+                        	<input   ng-checked="flag.vipYes"  type="radio" data-ng-model="user.vip_status"  placeholder="Vip" 
+                        	   value =1 /> Yes <br/>
+                        	<input   ng-checked="flag.vipNo"  type="radio" data-ng-model="user.vip_status"  placeholder="Vip" 
+                        	   value =0 /> No <br/>
+                        	
+                     	</div>		
+                   	</div>
+                   	<div class="form-group">
+                		<div class="form-group">
+                		<!--  -->
+                		 <!-- Vip  -->
+                		<label for="inputName3" class="col-sm-2 control-label">Vip Expiration</label>
+                		<div class="col-sm-4">
+                    			<input name="dob" type="datetime-local" class="form-control"  data-ng-model="user.vip_expiration" placeholder="yyyy-MM-ddTHH:mm:ss" 
+                         		 required />
+                   		 </div>
+                		<label for="inputName3" class="col-sm-2 control-label">Contact Number</label>
+                		<div class="col-sm-4">
+                    			<input  type="number" class="form-control"  data-ng-model="user.contact" placeholder="Contact Number" 
+                         		 required />
+                   		 </div>
+                   		
+                   	</div>
+                   	
+                   
+                     	<div class="form-group">	
+                    		<label for="inputName3" class="col-sm-2 control-label">Reffer By </label>
+                     		<div class="col-sm-4">
+                        		<input  class="form-control" type="text" data-ng-model="user.reffer_by"  placeholder="Reffer By" 
+                        	 	required />
+                        	</div>
+                        	<label for="inputName3" class="col-sm-2 control-label">Reffer Id </label>
+                     		<div class="col-sm-4">
+                        		<input  class="form-control" type="text" data-ng-model="user.reffer_id"  placeholder="Reffer Id" 
+                        	 	required />
+                        	</div>
+                     	</div>
+                     	
+                     	
+                   
+                     	<div class="form-group">	
+                    		<label for="inputName3" class="col-sm-2 control-label">Current Score </label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="number" data-ng-model="user.current_score"  placeholder="Current Score" 
+                        	 	required />
+                        	</div>
+                        	<label for="inputName3" class="col-sm-2 control-label">Point Gained </label>
+                     		<div class="col-sm-4">
+                        		<input  class="form-control" type="number" data-ng-model="user.point_gained"  placeholder="Point Gained" 
+                        	 	required />
+                        	</div>
+                     	</div>
+                     	
+                     	<div class="form-group">	
+                    		<label for="inputName3" class="col-sm-2 control-label">Rank </label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="number" data-ng-model="user.rank"  placeholder="Rank" 
+                        	 	required />
+                        	</div>
+                        	<label for="inputName3" class="col-sm-2 control-label">Registration Score</label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="number" data-ng-model="user.registration_score"  placeholder="Registration Score" 
+                        	 	required />
+                        	</div>
+                     	</div>
+                     	
+                     	<div class="form-group">	
+                    		<label for="inputName3" class="col-sm-2 control-label">Facebook Identifier </label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="text" data-ng-model="user.facebook_identifier"  placeholder="Facebook Identifier" 
+                        	 	required />
+                        	</div>
+                        	<label for="inputName3" class="col-sm-2 control-label">Facebook Token</label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="text" data-ng-model="user.facebook_token"  placeholder="Facebook Token" 
+                        	 	required />
+                        	</div>
+                     	</div>
+                     	
+                     	<div class="form-group">	
+                    		<label for="inputName3" class="col-sm-2 control-label">Comment </label>
+                     		<div class="col-sm-4">
+                        		<input   class="form-control" type="text" data-ng-model="user.comments"  placeholder="Comment" 
+                        	 	required />
+                        	</div>
+                        	<label for="inputName3" class="col-sm-2 control-label">Active Status</label>
+                         	<div class="col-sm-4">
+                         		 <select  class ="form-control" ng-init="user.active_flag = activeStatus[0]" ng-model="user.active_flag" ng-value ="" ng-options="active.name for active in activeStatus ">                     		 
+         						 </select>
+                         	</div>
+                        	
+                     	</div>
+                     	
+                    
+                     	 <div class="form-group ">
+                     	 	<div class="col-sm-offset-2 col-sm-10">
+                     	 		<button type="submit" class="btn btn-default">
+                     	 			<span data-ng-show="flag.update">Update User</span>
+                     	 			<span data-ng-show="!flag.update">Create User</span>
+                     	 		</button>
+                     	 	</div> 
+                     	 </div>
+                    	 
+             		
+               	</fieldset>
+             </form>
+             </div>
+                 
+            {{checkboxes.items}}
+         
+    <table ng-table="tableParams" class="table">
+        <tbody ng-repeat="u in users | filter:filter.search" ng-scroller-repeat= "u in users">
+        <tr id="tr{{u.id}}" ng-class-odd="'odd'" ng-class-even="'even'">
+           <td width="30" style="text-align: left" header="'ng-table/headers/checkbox.html'">
+                <input type="checkbox" ng-model="checkboxes.items[u.id]" />
+            </td>
+            <td class="rowTd" data-title="'Id'" 					sortable="'id'">{{u.id}}</td>
+            <td data-title="'Name'" sortable="'brand'">{{u.name}}</td>
+            <!--<td data-title="'Email'"   					sortable="'image'">{{u.email}}</td>
+            <td data-title="'Pincode'"    				sortable="'valid_thru'">{{u.pin_code}}</td>
+            <td data-title="'DOB'" 						sortable="'title'">{{u.dob}}</td>
+            <td data-title="'State'"       				sortable="'details'">{{u.state}}</td>
+            <td data-title="'Sex'"       					sortable="'fine_print'">{{u.gender}}</td>
+            <td data-title="'Phone'"       				sortable="'category'">{{u.contact}}</td>
+            <td data-title="'Reffered By'"       			sortable="'popularity_rank'">{{u.reffer_by}}</td>
+            <td data-title="'Reffered Id'"       			sortable="'active_flag'">{{u.reffer_id}}</td>
+            -->
+            <td data-title="'Vip Status'" sortable="'local_flag'">{{u.vip_status}}</td>
+            <!--<td data-title="'Vip Expiration'"  sortable="'vip_flag'">{{u.vip_expiration}}</td>
+            -->
+              <td data-title="'Active Status'"  sortable="'share_counter'">{{astatus[u.active_flag]}}</td>
+            <td data-title="'Current Score'"       		sortable="'views_counter'">{{u.current_score}}</td>
+            <!--<td data-title="'Point Gained'"       		sortable="'download_counter'">{{u.point_gained}}</td>
+            -->
+            <td data-title="'Rank'"       				sortable="'likes_counter'">{{u.rank}}</td>
+            <!--<td data-title="'Registration Source'"       	sortable="'share_counter'">{{u.registration_score}}</td>
+          
+            <td data-title="'Facebook Identifier'"       	sortable="'share_counter'">{{u.facebook_identifier}}</td>
+            <td data-title="'Facebook Token'"       		sortable="'share_counter'">{{u.facebook_token}}</td>
+            <td data-title="'Comment'"       				sortable="'share_counter'">{{u.comments}}</td>
+            --><td >
+            	<input type=button id="editRowBtn{{u.id}}" class="btn btn-small btn-primary" value="edit" ng-click="setEditId(u,u.id)">
+            </td>
+             <td >
+             	<input type=button value="delete" class="btn btn-small btn-danger"  ng-click="deleteUser($index,u.id)">
+             </td>
+            
+        </tr>
+        <tr ng-show="editId===u.id" ng-if="editId===u.id">
+            <td colspan="7" ng-include src="'views/userEdit.html'"></td>
+        </tr>
+        </tbody>
+    </table>
+    <script type="text/ng-template" id="ng-table/headers/checkbox.html">
+        <input type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox" value="" />
+    </script>
+           
+           
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<table class="noborder" ng-controller="couponCtrl">
+    <tr>
+        <td rowspan="2">ID: {{u.id}}<input type="hidden" name="id" data-ng-model="user.id" value="{{u.id}}"></td>
+        <td>Name: <input type="text" name="fn" class="w100" data-ng-model="user.name" value="{{u.brand}}"></td>
+       
+        <td>Email: <input type="text" name="fn" class="w100" data-ng-model="user.email" value="{{u.image}}"></td>
+        <td>Vip Expiration: <input type="datetime-local" class="form-control"  data-ng-model="user.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+                        	/></td>
+        <td>Vip Status<input type="text" name="fn" class="w100" data-ng-model="user.active_status" value="{{u.popularity_rank}}"></td>
+        <td>Pincode:<input type="text" name="fn" class="w100"data-ng-model="user.pin_code"  value="{{u.title}}"></td>
+        <td>DOB:<input type="text" name="fn" class="w100" data-ng-model="user.dob" value="{{u.details}}"></td>
+        <td>State :<input type="text" name="fn" class="w100" data-ng-model="user.state" value="{{u.fine_print}}"></td>
+        <td>Sex :<input type="text" name="fn" class="w100" data-ng-model="user.gender" value="{{u.category}}"></td>
+        <td><input type="button" value=" save " ng-click="saveUser()"></td>
+    </tr>
+    <tr>
+    	<td>Phone<input type="text" name="fn" class="w100" data-ng-model="user.contact" value="{{u.popularity_rank}}"></td>
+        <td>Reffered By<input type="text" name="fn" class="w100" data-ng-model="user.reffer_by" value="{{u.popularity_rank}}"></td>
+       <td>Reffered Id<input type="text" name="fn" class="w100" data-ng-model="user.reffer_id" value="{{u.reffer_id}}"></td>
+      	<td>Current Score<input type="text" name="fn" class="w100" data-ng-model="user.current_score" value="{{u.current_score}}"></td>
+    	<td>Point Gain<input type="text" name="fn" class="w100" data-ng-model="user.point_gained" value="{{u.point_gained}}"></td><!--
+        <td>Rank<input type="text" name="fn" class="w100" data-ng-model="user.rank" value="{{u.rank}}"></td>
+        --><td>Active:<input type="text" name="fn" class="w100" data-ng-model="user.active_flag" value="{{u.active_flag}}"></td>
+         <!--<td>Registration Score:<input type="text" name="fn" class="w100" data-ng-model="user.registration_score" value="{{u.registration_score}}"> </td>
+         --><td>Facebook Identifier :<input type="text" name="fn" class="w100"  data-ng-model="user.facebook_identifier" value="{{u.facebook_identifier}}"></td><!--
+         <td>Facebook Token:<input type="text" name="fn" class="w100" data-ng-model="user.facebook_token" value="{{u.facebook_token}}"></td>
+         --><td>Comments:<input type="text" name="fn" class="w100" data-ng-model="user.comments" value="{{u.comments}}"></td>
+         <td><input type="button" value=" cancel" ng-click="cancel()"></td>
+       
+    </tr>
+</table>
+<!--  class="editRowTd" -->

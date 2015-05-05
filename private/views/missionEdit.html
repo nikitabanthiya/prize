@@ -1,0 +1,29 @@
+<table class="noborder" ng-controller="missionCtrl">
+    <tr>
+        <td rowspan="2">ID: {{m.id}}<input type="hidden" name="id" data-ng-model="mission.id" value="{{m.id}}"></td>
+        <td>Sponser: <input type="text" name="fn" class="w100" data-ng-model="mission.sponser" value="{{m.sponser}}"></td>
+       
+        <td>Pic: <input type="text" name="fn" class="w100" data-ng-model="mission.image" value="{{m.image}}"></td>
+        <td>Expiration date: <input type="datetime-local" class="form-control"  data-ng-model="mission.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+                        	/></td>
+        <td>More Info:<input type="text" name="fn" class="w100"data-ng-model="mission.info"  value="{{m.info}}"></td>
+        <td>Details:<input type="text" name="fn" class="w100" data-ng-model="mission.details" value="{{m.details}}"></td>
+        
+      
+        <td><input type="button" value=" save " ng-click="saveMission()">{{m.id}}</td>
+        
+    </tr>
+    <tr>
+    	<td>Comments :<input type="text" name="fn" class="w100" data-ng-model="mission.comments" value="{{m.comments}}"></td>
+        <td>Url :<input type="text" name="fn" class="w100" data-ng-model="mission.url" value="{{m.url}}"></td>
+        <td>Participant Counter<input type="text" name="fn" class="w100" data-ng-model="mission.participants_counter" value="{{m.participants_counter}}"></td>
+        <td>Active:<input type="text" name="fn" class="w100" data-ng-model="mission.active_flag" value="{{m.active_flag}}"></td>
+          <!--<td>Views:<input type="text" name="fn" class="w100" data-ng-model="mission.views_counter" value="{{m.views_counter}}"></td>
+         <td>Download:<input type="text" name="fn" class="w100" data-ng-model="mission.download_counter" value="{{m.download_counter}}"></td>
+         <td>Likes:<input type="text" name="fn" class="w100" data-ng-model="mission.likes_counter" value="{{m.likes_counter}}"></td>
+         <td>Share:<input type="text" name="fn" class="w100" data-ng-model="mission.share_counter" value="{{m.share_counter}}"></td>
+         --><td><input type="button" value=" cancel" ng-click="setEditId(-1)"></td>
+       
+    </tr>
+</table>
+<!--  class="editRowTd" -->

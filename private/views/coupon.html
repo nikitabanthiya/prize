@@ -1,0 +1,231 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header" style="color : grey !important;">Coupons</h1>	 
+        <div class="row">
+            <button ng-click="createCoupon()" class="btn btn-primary pull-left" style="margin-left : 2em">Create Coupon</button>
+                <div class="col-md-4 col-md-offset-6">
+
+                    <form action="" class="search-form">
+                    
+                        <div class="form-group has-feedback">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="text" ng-model = "filter.search" class="form-control" name="search" id="search" placeholder="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+ </div>   	
+             <div ng-show="showHideCreateCoupons">
+                 <form name="couponCreate" class="form-horizontal" role="form" data-ng-submit ="saveOrCreateCoupon()" enctype= "multipart/form-data" >
+                 	<fieldset>
+                 		<div class="form-group">
+                    		<!-- name -->
+                    		<label for="inputName3" class="col-sm-2 control-label">Title</label>
+                    		<div class="col-sm-4">
+                        			<input  class="form-control" type="text" data-ng-model="coupon.title" placeholder="Title" 
+                             		 required />	
+                       		 </div>
+                       		 <!-- code -->
+                        	<label for="inputName3" class="col-sm-2 control-label">Details</label>
+                         	<div class="col-sm-4">
+                            	<input type="text" class="form-control" data-ng-model="coupon.details"  placeholder="Details" 
+                            	 required />
+                            </div>
+                       	</div>
+                       	
+                        <div class="form-group">	 	
+                        <!-- brand -->
+                        	<label for="inputName3" class="col-sm-2 control-label">Brand</label>
+                       
+                         	<div class="col-sm-4">
+                         		
+         						  <select  class ="form-control"  ng-model="coupon.brand" >
+         						  <option value='' disabled>- Please choose the brands-</option>
+         						  <option ng-repeat ="brand in brands" value ="{{brand.id}}" >
+         						  	{{brand.name}}
+         						  </option>
+         						 </select>
+         					
+                         	</div>
+                         	<!-- Validity-->
+                        	<label for="inputName3" class="col-sm-2 control-label">Expiration date</label>
+                         	<div class="col-sm-4">
+                         	
+                           <input type="datetime-local" class="form-control"  data-ng-model="coupon.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+                            	 required />
+                            	 
+                            </div>
+                         </div>
+                        <div class="form-group">	 		
+                 		
+                        	<label for="inputName3" class="col-sm-2 control-label">Fine Print</label>
+                         	<div class="col-sm-4">
+                            	<input  type="text" class="form-control" data-ng-model="coupon.fine_print"  placeholder="Fine Print" 
+                            	 required />	
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">URL</label>
+                         	<div class="col-sm-4">
+                            	<input   type="url" class="form-control"  data-ng-model="coupon.url"  placeholder="URL" 
+                            	 required />
+                         	</div>
+                         </div>
+                         
+                         <div class="form-group">	
+                         	<!-- Image url 1-->
+                        	<label for="inputName3" class="col-sm-2 control-label">Comments</label>
+                         	<div class="col-sm-4">
+                            	<input  type="text" class="form-control"  data-ng-model="coupon.comments"  placeholder="Comments" 
+                            	 required />	
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Category</label>
+                         	<div class="col-sm-4">
+                         		 <select  class ="form-control" ng-model="selectedCategories" ng-options="item.id as item.name for item in items" multiple="multiple" required>
+         						 </select>
+         						
+                         	</div>
+                         </div>
+                         <div class="form-group">	
+                         	<label for="inputName3" class="col-sm-2 control-label">Popularity Rank</label>
+                         	<div class="col-sm-4">
+                         		<select  class ="form-control" ng-init="coupon.popularity_rank = popularityRank[0]" ng-model="coupon.popularity_rank" ng-options="rank.name for rank in popularityRank ">
+                         		
+                         		 </select>
+                         		
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Active Status</label>
+                         	<div class="col-sm-4">
+                         		 <select  class ="form-control" ng-init="coupon.active_flag = activeStatus[0]" ng-model="coupon.active_flag" ng-value ="" ng-options="active.name for active in activeStatus ">                     		 
+         						 </select>
+                         	</div>
+                         </div>
+                         <div class="form-group">	 
+                         	<label for="inputName3" class="col-sm-2 control-label">Local</label>
+                         	<div class="col-sm-4">
+                            	<input   ng-checked="flag.vipYes"  type="radio" data-ng-model="coupon.local_flag"  placeholder="Vip" 
+                            	   value =1 /> Yes <br/>
+                            	<input   ng-checked="flag.vipNo"  type="radio" data-ng-model="coupon.local_flag"  placeholder="Vip" 
+                            	   value =0 /> No <br/>
+                            	
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Vip</label>
+                         	<div class="col-sm-4">
+                            	<input   ng-checked="flag.vipYes" type="radio" data-ng-model="coupon.vip"  placeholder="Vip" 
+                            	   value =1 /> Yes <br/>
+                            	<input   ng-checked="flag.vipNo" type="radio" data-ng-model="coupon.vip"  placeholder="Vip" 
+                            	   value =0 /> No <br/>
+                            	
+                         	</div>
+                          </div>
+                          <div class="form-group">	 
+                         	<label for="inputName3" class="col-sm-2 control-label">Image</label>
+                         		<input type="file" name="pic" data-ng-model="coupon.image" accept="image/*">
+                         	
+                          </div>
+                          <!--<div class="form-group">	
+                         	 Price
+                        	<label for="inputName3" class="col-sm-2 control-label">Views</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.views_counter"  placeholder="Views" 
+                            	 required />
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Download</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.download_counter"  placeholder="Download" 
+                            	 required />
+                         	</div>
+                          </div>
+                          
+                           <div class="form-group">	
+                         	 Price
+                        	<label for="inputName3" class="col-sm-2 control-label">Latitude</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.latitude"  placeholder="Latitude" 
+                            	 required />
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Longitude</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.longitude"  placeholder="Longitude" 
+                            	 required />
+                         	</div>
+                          </div>
+                          
+                          <div class="form-group">	
+                         	
+                        	<label for="inputName3" class="col-sm-2 control-label">Likes</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.likes_counter"  placeholder="Likes" 
+                            	 required />
+                         	</div>
+                         	<label for="inputName3" class="col-sm-2 control-label">Share</label>
+                         	<div class="col-sm-4">
+                            	<input   type="number" class="form-control"  data-ng-model="coupon.share_counter"  placeholder="Share" 
+                            	 required />
+                         	</div>
+                          </div>
+                         --><div class="form-group">	
+                         	 <div class="col-sm-offset-2 col-sm-10">
+                        		<button type="submit" class="btn btn-default">
+                        			<span data-ng-show="flag.update">Update Coupon</span>
+                        			<span data-ng-show="!flag.update">Create Coupon</span>
+                        		</button>
+                        	</div>
+                        </div> 
+                        	 
+                 		
+                   	</fieldset>
+                 </form>
+             </div>
+                 
+            
+      <button type="button" data-ng-click="" class="btn btn-default"><i class="fa fa-edit"></i></button>
+      <button type="button" data-ng-click="deleteAll(checkboxes.items)" class="btn btn-danger "><i class="fa fa-trash-o"></i></button>
+          
+ {{checkboxes.items}} 
+    <table ng-table="tableParams" class="table">
+        <tbody ng-repeat="c in coupons | filter:filter.search" ng-scroller-repeat= "c in coupons">
+        <tr id="tr{{c.id}}" ng-class-odd="'odd'" ng-class-even="'even'">
+           <td width="30" style="text-align: left" header="'ng-table/headers/checkbox.html'">
+                <input type="checkbox" ng-model="checkboxes.items[c.id]" />
+            </td>
+            <td class="rowTd" data-title="'Id'" 					sortable="'id'">{{c.id}}</td>
+            <td class="rowTd" data-title="'Brand'" 					sortable="'brand'">{{c.name}}</td><!--
+            <td class="rowTd" data-title="'Pic'"   					sortable="'image'">{{c.image}}</td>
+            -->
+            <td class="rowTd" data-title="'Expiration Date '"    	sortable="'valid_thru'">{{c.valid_thru}}</td>
+            <!--<td class="rowTd" data-title="'Title'" 					sortable="'title'">{{c.title}}</td>
+            <td class="rowTd" data-title="'Details'"       			sortable="'details'">{{c.details}}</td>
+            <td class="rowTd" data-title="'Fine Print'"       		sortable="'fine_print'">{{c.fine_print}}</td>
+            <td class="rowTd" data-title="'Category'"       		sortable="'category'">{{c.category}}</td>
+            <td class="rowTd" data-title="'Popularity Rank'"       	sortable="'popularity_rank'">{{c.popularity_rank}}</td>
+            -->
+            <td class="rowTd" data-title="'Active Status'"       	> {{astatus[c.active_flag]}}</td>
+            <td class="rowTd" data-title="'Local Status'"       	sortable="'local_flag'">{{local_check[c.local_flag]}}</td>
+            <td class="rowTd" data-title="'Vip Flag'"       		sortable="'vip_flag'">{{vip_check[c.vip_flag]}}</td>
+            <td class="rowTd" data-title="'Views Counter'"       	sortable="'views_counter'">{{c.views_counter}}</td>
+            <td class="rowTd" data-title="'Download Counter'"       sortable="'download_counter'">{{c.download_counter}}</td>
+            <td class="rowTd" data-title="'Likes Counter'"       	sortable="'likes_counter'">{{c.likes_counter}}</td>
+            <td class="rowTd" data-title="'Share Counter'"       	sortable="'share_counter'">{{c.share_counter}}</td>
+             <td class="rowTd" data-title="'Created At'"       	sortable="'share_counter'">{{c.created_at}}</td>
+              <td class="rowTd" data-title="'Updated At'"       	sortable="'share_counter'">{{c.updated_at}}</td>
+            <td class="rowTd" >
+            	<input type=button id="editRowBtn{{c.id}}" value="Edit" class="btn btn-small btn-primary" ng-click="setEditId(c,c.id)">
+            </td>
+             <td class="rowTd" >
+             	<input type=button value="Delete" class="btn btn-small btn-danger" ng-click="deleteCoupon($index,c.id)">
+             </td>
+            
+        </tr>
+        <tr ng-show="editId===c.id" ng-if="editId===c.id">
+            <td colspan="7" ng-include src="'views/couponsEdit.html'"></td>
+        </tr>
+        </tbody>
+    </table>
+    <script type="text/ng-template" id="ng-table/headers/checkbox.html">
+        <input type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox" value="" onclick="alert('ch')"/>
+    </script>
+           
+    
+    </div>
+</div>

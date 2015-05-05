@@ -1,0 +1,67 @@
+<div class="row content">
+    <div class="col-lg-12">
+        <h1 class="page-header">Category</h1>
+       
+            <div>
+                	<input type="text" placeholder="Search"  data-ng-model="filter.search" />
+                 
+                	 <button class="pull-right" ng-click="createCategory()">Create category</button>
+             
+			</div>
+			</br>
+             <div ng-show="showHideCreateCategories">
+             <form name="categoryCreate" class="form-horizontal secureForm"  data-ng-submit="saveOrCreatecategory();">
+             	<fieldset>
+             		
+                		<!-- name -->
+                	 	
+                			<div class="form-group">
+                			<label for="inputName3" class="col-sm-2 control-label">Name</label>
+                			<div class="col-sm-4">
+                			
+                    			<input name="name" type="text" class="form-control" data-ng-model="category.name" placeholder="Name" 
+                         		 required />
+                        		
+                   		 	</div>
+                   		 	</div>
+                   		
+                   			
+                    
+                     	
+                    	<div class="form-group">	
+                     	 <div class="col-sm-offset-2 col-sm-10">
+                    		<button type="submit" class="btn btn-default">
+                    			<span data-ng-show="flag.update">Update Category</span>
+                    			<span data-ng-show="!flag.update">Create Category</span>
+                    		</button>
+                    	</div>
+                    </div> 
+               	</fieldset>
+             </form>
+             </div>
+                 
+            <table datatable="ng" ng-show="true" data-dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-bordered table-hover">
+                <thead>
+               
+                <tr>
+                    <th>Name</th>
+                    
+                    <th>Update/Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <div>
+                <tr data-ng-repeat="c in categories | filter:filter.search">
+                    <td>{{ c.name }}</td>
+                    <td>
+                        <button type="button" data-ng-click="editcategory($index,c,c.id)" class="btn btn-default"><i class="fa fa-edit"></i></button>
+                        <button type="button" data-ng-click="deletecategory($index,c.id)" class="btn btn-danger "><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+                </div>
+                </tbody>
+            </table>
+            
+       
+    </div>
+</div>

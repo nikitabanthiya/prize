@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" data-ng-app="dashModule">
+    
+    <head>
+        <h1>
+            <small>FreaKoupon</small>
+        </h1>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- JQuery scripts -->
+        <script src="scripts/libraries/jquery.min.js"></script>
+
+
+        <!--angular scripts-->
+        <script src="scripts/frameworks/AngularJS/angular.min.js"></script>
+        <script src="scripts/frameworks/AngularJS/angular-route.min.js"></script>
+        <script src="scripts/frameworks/AngularJS/ui-bootstrap-tpls.min.js"></script>
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- angular routing configuration -->
+        <script src="scripts/app.js"></script>
+
+        <!-- factories/Services-->
+        <script src="scripts/factories/authentication.js"></script>
+        <script src="scripts/factories/authInterceptor.js"></script>
+        <script src="scripts/factories/url.js"></script>
+        <script src="scripts/factories/endPoint.js"></script>
+        <script src="scripts/factories/redirect.js"></script>
+        
+        <!-- Frameworks --> 
+        <script src="scripts/frameworks/dataTables.js"></script>
+        <script src="scripts/frameworks/angularMd5.js"></script>
+        <script src="scripts/frameworks/angularDataTables.js"></script>
+
+        <!-- Directives --> 
+        <script src="scripts/directives/loginDialog.js"></script>
+        <script src="scripts/directives/file.js"></script>
+
+        <!-- Filters --> 
+        <script src="scripts/filter/filter.js"></script>
+       
+    <script data-require="ng-table@*" data-semver="0.3.0" src="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.js"></script>
+    
+    <link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    
+
+        <!-- Constants --> 
+        <script src="scripts/constants/constants.js"></script>
+
+        <!-- Controllers -->
+        <script src="scripts/applicationCtrl.js"></script>
+        <script src="scripts/controllers/couponCtrl.js"></script>
+        <script src="scripts/controllers/settingsCtrl.js"></script>  
+        <script src="scripts/controllers/userCtrl.js"></script>
+        <script src="scripts/controllers/queryCtrl.js"></script>     
+        <script src="scripts/controllers/missionCtrl.js"></script> 
+        <script src="scripts/controllers/dataCtrl.js"></script>
+        <script src="scripts/controllers/notificationCtrl.js"></script>
+        <script src="scripts/controllers/batchCtrl.js"></script>
+        <script src="scripts/controllers/auctionCtrl.js"></script>
+        <script src="scripts/controllers/modal.js"></script>
+        <script src="scripts/controllers/categoryCtrl.js"></script>
+        <script src="scripts/controllers/appCtrl.js"></script>
+
+        <!-- Styles -->
+        <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/stylesheet.css" rel="stylesheet">
+        <link href="styles/linkPreview.css" rel="stylesheet">       
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    </head>
+
+    <body class="" data-ng-controller="rootController"  >  <!--mainContainer--> 
+        <div class="row mainContainer" >  <!--mainContainer-->
+
+
+                <!-- Sidebar-->
+                <div class="sidebar col-xs-2" style="bottom: 0; height: 100%">
+                    <!-- Header -->
+                    <div class="row headerDiv " >
+                        <div class="col-xs-12 homeLogo">
+                            <a class=" linkedLogo ">
+                                FreaKoupon<!--<img src="" width="160" height="37" style="margin-left: 15px" alt="FreaKupon">-->
+                            </a>   
+                        </div>
+                    </div>
+
+                    <div class="l1 row flatLink" data-ng-click="redirect(1)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-money fa-2x"></i> </div>     <div class="menuName col-xs-9"> Coupon</div>
+                    </div>
+                    <div class="l2 row flatLink" data-ng-click="redirect(2)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-user fa-2x"></i> </div>      <div class="menuName col-xs-9"> User</div>
+                    </div>
+                    <div class="l3 row flatLink" data-ng-click="redirect(3)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-legal fa-2x"></i> </div>        <div class="menuName col-xs-9"> Auction</div>
+                    </div>
+                    <div class="l4 row flatLink" data-ng-click="redirect(4)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-trophy fa-2x"></i> </div>     <div class="menuName col-xs-9"> Mission</div>
+                    </div>
+                    <!--<div class="l5 row flatLink" data-ng-click="redirect(5)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-terminal fa-2x"></i> </div>  <div class="menuName col-xs-9"> Queries</div>
+                    </div>
+                    <div class="l6 row flatLink" data-ng-click="redirect(6)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-database fa-2x"></i> </div>         <div class="menuName col-xs-9"> Data</div>
+                    </div>
+                    --><div class="l7 row flatLink" data-ng-click="redirect(7)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-file-text-o fa-2x"></i> </div>         <div class="menuName col-xs-9"> Batches</div>
+                    </div><!--
+                    <div class="l8 row flatLink" data-ng-click="redirect(8)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-bell fa-2x"></i> </div>         <div class="menuName col-xs-9"> Notification</div>
+                    </div>
+                    --><!--<div class="l9 row flatLink" data-ng-click="redirect(9)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-gear fa-2x"></i> </div>         <div class="menuName col-xs-9"> Settings</div>
+                    </div>
+                    --><div class="20 row flatLink" data-ng-click="redirect(10)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-gear fa-2x"></i> </div>         <div class="menuName col-xs-9"> Category</div>
+                    </div><!--
+                    <div class="21 row flatLink" data-ng-click="redirect(11)"> 
+                        <div class=" col-xs-2"> <i class="fa fa-gear fa-2x"></i> </div>         <div class="menuName col-xs-9"> Adds</div>
+                    </div>
+                --></div>
+
+                <!-- Main content-->
+                <div class=" col-xs-10" style="bottom: 0; background-color: #F0F3F6; height: 100%">
+                    <div class="row headerDiv " style="height: 60px; ">
+                        <div class="col-xs-12 userOption">
+                            <div class="white pull-right">
+                                <span class="dropdown centered" data-dropdown >
+                                    <a href="" class="dropdown-toggle user" data-dropdown-toggle style="color: white"><i class="fa fa-angle-down fa-2x"></i> </a> 
+                                    <ul class="dropdown-menu minWidth pull-left " style="text-align:left;font-size: small">
+                                        <li> <a href="" data-ng-click="logout()">Logout</a> </li>
+                                    </ul>
+                                </span>              
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="row" style="bottom: 0; height: 100%">
+                        <div class="content col-xs-12" data-ng-view=""></div>
+                    </div>   
+                </div>
+
+        </div>
+    </body>
+
+</html>

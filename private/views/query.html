@@ -1,0 +1,166 @@
+<style>
+body {
+    padding: 10px !important;   
+}
+
+.ng-table {
+    border: 1px solid #000;
+}
+
+</style>
+<div class="row content">
+    <div class="col-lg-12">
+        <h1 class="page-header">auctions</h1>
+      
+           <div>
+            	 
+              <input type="text" placeholder="Search"  data-ng-model="filter.search"/>
+                
+             <button ng-click="createauction()" class ="pull-right">Create auction</button>
+                	
+                	
+             </div>   	
+              <div ng-show="showHideCreateauctions">
+             <form name="auctionCreate" class="form-horizontal" role="form" data-ng-submit ="saveOrCreateauction()" >
+             	<fieldset>
+             		<div class="form-group">
+                		<!-- name -->
+                		<label for="inputName3" class="col-sm-2 control-label">Description</label>
+                		<div class="col-sm-4">
+                    			<input  class="form-control" type="text" data-ng-model="auction." placeholder="Title" 
+                         		 required />	
+                   		 </div>
+                   		 <!-- code -->
+                    	<label for="inputName3" class="col-sm-2 control-label">Sponser</label>
+                     	<div class="col-sm-4">
+                        	<input type="text" class="form-control" data-ng-model="auction.details"  placeholder="Details" 
+                        	 required />
+                        </div>
+                   	</div>
+                   	
+                    <div class="form-group">	 	
+                    <!-- brand -->
+                    	<label for="inputName3" class="col-sm-2 control-label">Bid Cost</label>
+                   
+                     	<div class="col-sm-4">
+                     		  <input type="datetime-local" class="form-control"  data-ng-model="auction.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+                        	 required />
+     						
+     					
+                     	</div>
+                     	<!-- Validity-->
+                    	<label for="inputName3" class="col-sm-2 control-label">Expiration date</label>
+                     	<div class="col-sm-4">
+                     	
+                       <input type="datetime-local" class="form-control"  data-ng-model="auction.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+                        	 required />
+                        	 
+                        </div>
+                     </div>
+                    <div class="form-group">	 		
+             		
+                    	<label for="inputName3" class="col-sm-2 control-label">Compensation Ratio</label>
+                     	<div class="col-sm-4">
+                        	<input  type="text" class="form-control" data-ng-model="auction.fine_print"  placeholder="Fine Print" 
+                        	 required />	
+                     	</div>
+                     	<label for="inputName3" class="col-sm-2 control-label">Sponser URL</label>
+                     	<div class="col-sm-4">
+                        	<input   type="url" class="form-control"  data-ng-model="auction.url"  placeholder="URL" 
+                        	 required />
+                     	</div>
+                     </div>
+                     
+                     <div class="form-group">	
+                     	<!-- Image url 1-->
+                    	<label for="inputName3" class="col-sm-2 control-label">Comments</label>
+                     	<div class="col-sm-4">
+                        	<input  type="text" class="form-control"  data-ng-model="auction.comments"  placeholder="Comments" 
+                        	 required />	
+                     	</div>
+                     	<label for="inputName3" class="col-sm-2 control-label">Minimum Bid</label>
+                     	<div class="col-sm-4">
+                     		 <select  class ="form-control" ng-model="selectedCategories" ng-options="item.id as item.name for item in items" multiple="multiple" required>
+     						 </select>
+     						
+                     	</div>
+                     </div>
+                     <div class="form-group">	
+                     	<label for="inputName3" class="col-sm-2 control-label">Bid Margin</label>
+                     	<div class="col-sm-4">
+                     		<select  class ="form-control" ng-init="auction.popularity_rank = popularityRank[0]" ng-model="auction.popularity_rank" ng-options="rank.name for rank in popularityRank ">
+                     		
+                     		 </select>
+                     		
+                     	</div>
+                     	<label for="inputName3" class="col-sm-2 control-label">Active Status</label>
+                     	<div class="col-sm-4">
+                     		 <select  class ="form-control" ng-init="auction.active_flag = activeStatus[0]" ng-model="auction.active_flag" ng-value ="" ng-options="active.name for active in activeStatus ">                     		 
+     						 </select>
+                     	</div>
+                     </div>
+                     <div class="form-group">	 
+                     	<label for="inputName3" class="col-sm-2 control-label">Bid Flag</label>
+                     	<div class="col-sm-4">
+                        	<input   ng-checked="flag.vipYes"  type="radio" data-ng-model="auction.local_flag"  placeholder="Vip" 
+                        	   value =1 /> Yes <br/>
+                        	<input   ng-checked="flag.vipNo"  type="radio" data-ng-model="auction.local_flag"  placeholder="Vip" 
+                        	   value =0 /> No <br/>
+                        	
+                     	</div>
+                     	
+                      </div>
+                     <div class="form-group">	
+                     	 <div class="col-sm-offset-2 col-sm-10">
+                    		<button type="submit" class="btn btn-default">
+                    			<span data-ng-show="flag.update">Update auction</span>
+                    			<span data-ng-show="!flag.update">Create auction</span>
+                    		</button>
+                    	</div>
+                    </div> 
+                    	 
+             		
+               	</fieldset>
+             </form>
+             
+             </div>
+                 
+            
+       {{checkboxes.items}}
+    <table ng-table="tableParams" class="table">
+        <tbody ng-repeat="c in auctions" ng-scroller-repeat= "c in auctions">
+        <tr id="tr{{a.id}}" ng-class-odd="'odd'" ng-class-even="'even'">
+           <td width="30" style="text-align: left" header="'ng-table/headers/checkbox.html'">
+                <input type="checkbox" ng-model="checkboxes.items[a.id]" />
+            </td>
+            <td class="rowTd" data-title="'Brand'" 					sortable="'brand'">{{a.brand}}</td>
+            <td class="rowTd" data-title="'Expiration Date '"    	sortable="'valid_thru'">{{a.valid_thru}}</td>
+             <td class="rowTd" data-title="'Active Status'"       	sortable="'active_flag'">{{a.active_flag}}</td>
+            <td class="rowTd" data-title="'Local Status'"       	sortable="'local_flag'">{{a.local_flag}}</td>
+            <td class="rowTd" data-title="'Vip Flag'"       		sortable="'vip_flag'">{{a.vip_flag}}</td>
+            <td class="rowTd" data-title="'Views Counter'"       	sortable="'views_counter'">{{a.views_counter}}</td>
+            <td class="rowTd" data-title="'Download Counter'"       sortable="'download_counter'">{{a.download_counter}}</td>
+            <td class="rowTd" data-title="'Likes Counter'"       	sortable="'likes_counter'">{{a.likes_counter}}</td>
+            <td class="rowTd" data-title="'Share Counter'"       	sortable="'share_counter'">{{a.share_counter}}</td>
+             <td class="rowTd" data-title="'Created At'"       	sortable="'share_counter'">{{a.created_at}}</td>
+              <td class="rowTd" data-title="'Updated At'"       	sortable="'share_counter'">{{a.updated_at}}</td>
+            <td class="rowTd" >
+            	<input type=button id="editRowBtn{{a.id}}" value="edit" ng-click="setEditId(c,a.id)">
+            </td>
+             <td class="rowTd" >
+             	<input type=button value="delete" ng-click="deleteauction($index,a.id)">
+             </td>
+            
+        </tr>
+        <tr ng-show="editId===a.id" ng-if="editId===a.id">
+            <td colspan="7" ng-include src="'views/auctionsEdit.html'"></td>
+        </tr>
+        </tbody>
+    </table>
+    <script type="text/ng-template" id="ng-table/headers/checkbox.html">
+        <input type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox" value="" />
+    </script>
+           
+    
+    </div>
+</div>

@@ -1,0 +1,111 @@
+.content{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+}
+.link{
+    cursor: pointer; 
+    cursor: hand;
+}
+.coverPage{
+    width: 100%;
+    height: 100%;
+    background-image: url(images/);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.dropzone{
+    position:absolute;
+    left:15px;
+    top:40px;
+    padding:0;
+    margin:0;
+    opacity: 0; 
+    width: 95%;
+    height: 85%;
+}
+.dropzone-wrapper{
+    min-height: 360px;
+    border-style: dashed;
+    border-color: #bfbfbf;
+    background-image: url(images/dropzone.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.thumbnail{
+    max-height: 125px;
+    max-width: 125px; 
+    margin: 1%;
+    display: inline;
+}
+.thumbnail:hover{
+    background-color: #e1e1e1;
+}
+.marked {
+    max-height: 125px;
+    max-width: 125px; 
+    margin: 1%;
+    display: inline;
+    background-color: #ffaeac;
+}
+.marked:hover{
+    background-color: #ffaeac;    
+}
+.green{
+    color: #43b743;
+}
+.green:hover{
+    color: #449D44;
+}
+.red{
+    color: #f36c69;
+}
+.red:hover{
+    color: #C9302C;
+}
+.blue{
+    color: #62a5df;
+}
+.blue:hover{
+    color: #428BCA;
+}
+.yellow{
+    color: #B8811A;
+}
+.black{
+    color: #464040;
+}
+.white{
+    color: #fff;
+}
+.cc-thumbnail-wrapper{
+    display: inline-block;
+    width: 125px; 
+    height: 125px;
+    border-radius: 15px;
+    background-color: white;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+}
+.cc-thumbnail-delete{
+    position: absolute;
+    right: 0;
+}
+.cc-thumbnail{
+    width: 125px;
+
+}
+
+.list {
+    background-color: #464040;
+}
+
+.list:hover {
+    background-color: #000;
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-ng-app="authModule">
+    
+    <head>
+        <title>
+            Freakoupon
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- JQuery scripts -->
+        <script src="scripts/libraries/jquery.min.js"></script>
+
+
+        <!--angular scripts-->
+        <script src="scripts/frameworks/AngularJS/angular.min.js"></script>
+        <script src="scripts/frameworks/AngularJS/angular-route.min.js"></script>
+        <script src="scripts/frameworks/AngularJS/ui-bootstrap-tpls.min.js"></script>
+
+        <!-- angular routing configuration -->
+        <script src="scripts/app.js"></script>
+
+        <!-- factories/Services-->
+        <script src="scripts/factories/authentication.js"></script>
+        <script src="scripts/factories/authInterceptor.js"></script>
+        <script src="scripts/factories/url.js"></script>
+        <script src="scripts/factories/endPoint.js"></script>
+        <script src="scripts/factories/redirect.js"></script>
+        
+        <!-- Directives --> 
+        <script src="scripts/directives/loginDialog.js"></script>
+
+        <!-- Constants --> 
+        <script src="scripts/constants/constants.js"></script>
+
+        <!-- Controllers -->
+        <script src="scripts/applicationCtrl.js"></script>
+        <script src="scripts/controllers/loginCtrl.js"></script>
+        <script src="scripts/controllers/forgotPassword.js"></script>
+        <script src="scripts/controllers/resetPassword.js"></script>
+
+        <!-- Styles -->
+        <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/stylesheet.css" rel="stylesheet">
+        <link href="styles/linkPreview.css" rel="stylesheet">       
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    </head>
+
+    <body class="" data-ng-controller="rootController">  <!--mainContainer--> 
+        <div data-ng-view=""></div>
+    </body>
+
+</html>

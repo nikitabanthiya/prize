@@ -1,0 +1,32 @@
+<table class="noborder" ng-controller="auctionCtrl">
+    <tr>
+        <td rowspan="2">ID: {{a.id}}<input type="hidden" name="id" data-ng-model="auction.id" value="{{a.id}}"></td>
+        <td>Prize: 					<input type="text"  class="w100" data-ng-model="auction.prize" value="{{a.prize}}"></td>
+        <td>Pic: 					<input type="text"  class="w100" data-ng-model="auction.image" value="{{a.image}}"></td>
+        <td>Expiration date: 		<input type="datetime-local" class="form-control"  data-ng-model="auction.valid_thru"  placeholder="yyyy-MM-ddTHH:mm:ss" 
+          /></td>
+        <td>Bid Cost:				<input type="number"  class="w100" data-ng-model="auction.bid_cost"  		 value="{{a.bid_cost}}"></td>
+        <td>Compensation rate:		<input type="number"  class="w100" data-ng-model="auction.compensation_rate" 		 value="{{a.compensation_rate}}"></td>
+        <td>Minimum Bid :			<input type="number"  class="w100" data-ng-model="auction.min_bid" 	 value="{{a.min_bid}}"></td>
+        <td>Bid Margin :			<input type="number"  class="w100" data-ng-model="auction.bid_margin" 		 value="{{a.bid_margin}}"></td>
+        
+        <td><input type="button" value=" save " ng-click="saveAuction()"></td>
+    </tr>
+    <tr>
+    	<td>Sponser					<input type="text"  class="w100" data-ng-model="auction.sponsor" value="{{a.sponser}}"></td>
+      	<td>Sponser Url				<input type="text"  class="w100" data-ng-model="auction.sponsor_url" value="{{a.sponser_url}}"></td>
+      	<td>Description				<input type="text" class="w100" data-ng-model="auction.descriptions" value="{{a.description}}"></td>
+      	<td>Comments				<input type="text" class="w100" data-ng-model="auction.comments" value="{{a.comments}}"></td>
+        <td>Active:					 <select  class ="form-control" ng-init="auction.active_flag = activeStatus[0]" ng-model="auction.active_flag" ng-value ="" ng-options="active.name for active in activeStatus ">                     		 
+     						 </select></td>
+        <td>Bid Counter:			<input type="text" class="w100" data-ng-model="auction.bid_counter" 		value="{{a.bid_counter}}"> </td>
+        <td>Paticipants Counter :	<input type="text" class="w100"  data-ng-model="auction.participant_counter" 		value="{{a.participant_counter}}"></td>
+        <!--<td>Views:					<input type="text" class="w100" data-ng-model="auction.views_counter" 	value="{{a.views_counter}}"></td>
+        <td>Reports:				<input type="text" class="w100" data-ng-model="auction.download_counter"value="{{a.download_counter}}"></td>
+        <td>Likes:					<input type="text" class="w100" data-ng-model="auction.likes_counter" 	value="{{a.likes_counter}}"></td>
+        <td>Share:					<input type="text" class="w100" data-ng-model="auction.share_counter" 	value="{{a.share_counter}}"></td>
+        --><td>						<input type="button" value=" cancel" ng-click="cancel()"></td>
+       
+    </tr>
+</table>
+<!--  class="editRowTd" -->

@@ -1,0 +1,87 @@
+<table class="noborder" ng-controller="couponCtrl" class="form-inline" style="background-color:#E8E8E8">
+    <tr>
+        <div class="form-group">
+        <td rowspan="2">ID: {{c.id}}<input type="hidden" name="id" data-ng-model="coupon.id" value="{{c.id}}"></td>
+        </div>
+        <div class="form-group">
+        <td>Brand: <select class="form-control" ng-model="coupon.brand" >
+            <option value='' disabled>- Please choose the brands-</option>
+            <option ng-repeat ="brand in brands" value ="{{brand.id}}" >
+                {{brand.name}}
+            </option>
+        </select></td>
+        </div>
+        <div class="form-group">
+        <td > Pic: 
+            <input class="form-control" type="text" name="fn"  data-ng-model="coupon.image"  value="{{c.image}}"></td>
+        </div>
+        <div class="form-group">    
+        <td > Expiration date: 
+            <input ng-init="coupon.valid_thru = c.valid_thru" type="datetime-local" class="form-control" data-ng-model="coupon.valid_thru" ng-value="c.valid_thru"/>
+        </td>
+        </div>
+        <div class="form-group">
+        <td > Title:
+            <input type="text" name="fn" data-ng-model="coupon.title" class="form-control" value="{{c.title}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td > Details:
+            <input type="text" name="fn" class="form-control" data-ng-model="coupon.details" value="{{c.details}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td > Fine Print :
+            <input type="text" name="fn" class="form-control" data-ng-model="coupon.fine_print" value="{{c.fine_print}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td >
+            <input type="button" value=" save " class="btn btn-small btn-primary" ng-click="saveCoupon()">
+        </td>
+        </div>
+    </tr>
+    <tr >
+        <div class="form-group">
+        <td >Popularity Rank
+            <input type="text" class="form-control" name="fn" data-ng-model="coupon.popularity_rank" value="{{c.popularity_rank}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td ><span>Category : </span>
+            <select class="form-control"  ng-model="selectedCategories" ng-options="item.id as item.name for item in items" multiple="multiple" required>
+            </select> 
+        </td>
+        <div class="form-group">
+        <td >Comments: 
+            <input class="form-control" input type="text" name="fn"  data-ng-model="coupon.comments" value="{{c.comments}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td >Active:
+            <select class="form-control" ng-init="coupon.active_flag = c.active_flag"  ng-model="coupon.active_flag" ng-options="active.name for active in activeStatus track by active.id">
+            {{coupon.active_flag}}
+        </select>
+        </td>
+        </div>
+        <div class="form-group">
+        <td >Local:
+            <input class="form-control" type="text" name="fn" data-ng-model="c.local_flag" value="{{c.local_flag}}">
+        </td>
+        </div>
+        <div class="form-group">
+        <td >Vip :
+            <input  ng-checked="flag.vipYes" type="radio" data-ng-model="c.vip" value="1"/> Yes 
+            <input  ng-checked="flag.vipNo" type="radio" data-ng-model="c.vip" value="0"/> No 
+        </td>
+        </div>
+        <div class="form-group">
+        <td >
+            <input  type="button" value=" cancel" class="btn btn-small btn-danger" ng-click="cancelCoupons()">
+        </td>
+        
+        </div>  
+    
+    </tr>
+</table>
+<!--  class="editRowTd" -->
